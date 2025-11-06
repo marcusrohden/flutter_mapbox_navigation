@@ -74,11 +74,14 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 36
-        
+
         ndk {
             abiFilters 'arm64-v8a', 'x86_64'  // Only 64-bit architectures for 16KB compliance
         }
-        
+
+        // Consumer ProGuard rules - automatically applied to apps using this plugin
+        consumerProguardFiles 'proguard-rules.pro'
+
         // 16 KB page size support - NDK 27 configuration
         // Note: No externalNativeBuild needed for Kotlin-only plugin
     }
@@ -121,13 +124,11 @@ dependencies {
     
     // Mapbox Navigation SDK and Maps SDK with NDK 27 support for 16 KB page size
     // Navigation SDK 2.21.0 requires Maps SDK 10.19.0 (as per official release notes)
+    // HTTP client module is included transitively - must not be stripped by ProGuard
     implementation('com.mapbox.navigation:android-ndk27:2.21.0')
     implementation('com.mapbox.navigation:ui-dropin-ndk27:2.21.0')
     implementation('com.mapbox.navigation:ui-maps-ndk27:2.21.0')
     implementation('com.mapbox.maps:android-ndk27:10.19.0')  // Compatible with Navigation SDK 2.21.0
-
-    // HTTP client module (required for Mapbox SDK networking)
-    implementation('com.mapbox.common:http-ndk27:24.5.0')
     
     // AndroidX dependencies
     implementation 'androidx.core:core-ktx:1.12.0'
