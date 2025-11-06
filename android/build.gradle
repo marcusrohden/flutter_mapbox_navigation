@@ -120,11 +120,11 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     
     // Mapbox Navigation SDK and Maps SDK with NDK 27 support for 16 KB page size
-    // Updated to latest versions as recommended by Mapbox AI Assistant
+    // Navigation SDK 2.21.0 requires Maps SDK 10.19.0 (as per official release notes)
     implementation('com.mapbox.navigation:android-ndk27:2.21.0')
     implementation('com.mapbox.navigation:ui-dropin-ndk27:2.21.0')
     implementation('com.mapbox.navigation:ui-maps-ndk27:2.21.0')
-    implementation('com.mapbox.maps:android-ndk27:11.14.3')  // Match successful user's version
+    implementation('com.mapbox.maps:android-ndk27:10.19.0')  // Compatible with Navigation SDK 2.21.0
     
     // AndroidX dependencies
     implementation 'androidx.core:core-ktx:1.12.0'
