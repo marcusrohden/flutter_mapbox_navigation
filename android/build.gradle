@@ -115,7 +115,8 @@ android {
 configurations.all {
     resolutionStrategy {
         force 'com.mapbox.common:common-ndk27:24.16.0'
-        exclude group: 'com.mapbox.common', module: 'okhttp-ndk27'
+        // Don't exclude okhttp - it contains the HTTP client module implementation
+        // exclude group: 'com.mapbox.common', module: 'okhttp-ndk27'
     }
 }
 
